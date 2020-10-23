@@ -1,11 +1,14 @@
 node {
-    stage('Example') {
-        try {
-            sh 'exit 1'
-        }
-        catch (exc) {
-            echo 'Something failed, I should sound the klaxons!'
-            throw
-        }
-    }
+    stage("Parallel") {
+	  	steps {
+	    parallel (
+	      "Taskone" : {
+	        //do some stuff
+	      },
+	      "Tasktwo" : {
+	        // Do some other stuff in parallel
+	      }
+	    )
+	  }
+	}
 }
